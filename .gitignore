@@ -1,0 +1,8 @@
+# Ignore everything by default.
+*
+
+# Keep the repository rules and requested project files.
+!.gitignore
+!AGENTS.md
+!Skills/
+!Skills/**
