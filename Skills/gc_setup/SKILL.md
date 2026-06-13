@@ -28,6 +28,9 @@ From the provided plans and specifications, the skill can extract relevant infor
 The following information can be extracted from the plans and specifications:
 - **Number of structures**: The total number of structures involved in the project.
 - **Number of floors**: The total number of floors across all structures in the project.
+- **Total square footage by floor**: The total square footage for each floor across all structures in the project.
+- **Total square footage**: The total square footage of the entire project.
+- **Estimated number of drywall sheets**: The estimated number of drywall sheets required for the project based on the total square footage and the specifications provided in the plans.
 - **Foundation Type**: The type of foundation used in the project (e.g., slab, crawl space, basement).
 - **Deck Type**: The type of deck used in the project (e.g., wood, composite, metal).
 - **Roof Type**: The type of roof used in the project (e.g., gable, hip, flat).
@@ -150,35 +153,6 @@ The skill enables users to organize bids and invoices by supplier or subcontract
 Users can also organize bids and invoices by milestone, allowing for better tracking of payments and financial obligations throughout the project. This feature helps users to ensure that all payments are made on time and that the project stays within budget by providing a clear overview of upcoming financial commitments.
 
 A bid line item may be linked to multiple milestones, and an invoice line item may also be linked to multiple milestones. This allows for greater flexibility in managing the financial aspects of the project and ensures that all costs are accurately tracked and attributed to the correct milestones.
-
-### Bid Intake
-Users can input bids supplied by subcontractors and suppliers, including detailed cost breakdowns and timelines. This feature helps to centralize all bid information, making it easier to review and compare different bids for the project.
-
-When intaking a bid, the skill must be able to capture the following information:
-- **Supplier Indentification**: Understand which of the suppliers listed in the project scope is submitting the bid. If this is a new supplier, the skill should prompt the user to add this supplier to the project scope.
-- **Construction Category**: Identify the construction category that the bid falls under (e.g., electrical, plumbing, carpentry) to ensure that the bid is organized correctly within the project scope. It os possible that a bid may fall under multiple construction categories, in which case, if the skill is unable to identify the correct categories, the skill should then prompt the user to help clarify and specify all relevant categories for accurate organization and tracking.
-- **File the original bid document**: The skill should also prompt the user to file the original bid document in the appropriate directory within the Documents folder (i.e. Documents/Suppliers/[supplier_name]/Bids), ensuring that all relevant information is readily available for review and analysis throughout the project lifecycle. The skill should also allow the user to update the bid information as needed throughout the project lifecycle to accommodate any changes or updates to the bid details, such as cost breakdowns or timelines, to ensure that all information remains accurate and up-to-date for effective project management and cost tracking.
-
-### Invoice Intake
-The skill enables users to record and manage invoices related to the project, ensuring that all costs are tracked and accounted for. This helps to maintain an accurate record of expenses and ensures that the project stays within budget.
-
-When intaking an invoice, the skill must be able to capture the following information:
-- **Supplier Identification**: Identify which supplier or subcontractor is associated with the invoice. If this is a new supplier, the skill should prompt the user to add this supplier to the project scope.
-- **Link to Bid**: Normally all Invoices will be linked to a previously submitted bid. If the invoice is related to a previously submitted bid, the skill should be able to link the invoice to the corresponding bid using the unique identifier assigned to each bid line item. If the invoice is not related to a previously submitted bid, the skill should prompt the user to specify the relevant bid information, shuch as **Supplier Information** and **Construction Category**. This will ensure that the invoice is organized correctly within the project scope and that all costs are accurately tracked and attributed to the correct parties.
-- **File the original invoice document**: The skill should also prompt the user to file the original invoice document in the appropriate directory within the Documents folder (i.e. Documents/Suppliers/[supplier_name]/Invoices/Paid or Documents/Suppliers/[supplier_name]/Invoices/Unpaid), ensuring that all relevant information is readily available for review and analysis throughout the project lifecycle. The skill should also allow the user to specify whether the invoice is paid or unpaid, and to update this status as needed throughout the project lifecycle to ensure that all financial obligations are accurately tracked and managed.
-
-#### "Link to bid" feature
-##### Online items identification
-If the invoice lines item are not identifiable as matching any of the bid line items, it is possible that the provided indentification information is only the item code from the supplier. In this case,
-the skill should use the website of the supplier to try to identify the item based on the item code, and then add a proper text name to the invoice line item based on the information found on the supplier's website. Once the item is identified, the skill should then attempt to link the invoice line item to the corresponding bid line item based on the identified item. If the skill is unable to identify the item using the supplier's website, it should prompt the user to provide additional information to help clarify and specify the correct bid line item for accurate organization and tracking.
-
-##### Matching Invoice Line Items to Bid Line Items
-Linking invoices line items to bid line items will not always be straighforward, as the invoice may include similar but not identical line items to those included in the bid, and the invoice may also include additional line items that were not included in the bid. The skill should be able to handle these scenarios by finding the best match between the invoice line items and the bid line items based on the information provided, and by prompting the user to clarify any discrepancies, duplicates, or to specify how to handle any additional line items included in the invoice.
-
-##### Handling Cost Discrepancies
-Also, if the total cost of the invoice line items exceeds the total cost of the bid line items, the skill should mark those line items as "Cost Excess".
-
-At the end of the invoice intake process, if there are any line items marked as "Cost Excess", the skill should provide a summary of the excess costs and prompt the user to specify how to handle the excess amount, such as by allocating it to a specific construction category or by creating a new bid line item to account for the additional costs.
 
 ## Benefits
 - **Improved Accuracy**: By centralizing bid and invoice data, the skill helps reduce errors and ensures that all information is accurate and easily accessible.
